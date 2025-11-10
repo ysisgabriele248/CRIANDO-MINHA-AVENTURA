@@ -1,6 +1,21 @@
 let storyText = document.getElementById("story-text");
 let choices = document.getElementById("choices");
 
+function restartGame() {
+  storyText.textContent = "Você acorda em uma ilha desconhecida após um naufrágio. A praia é calma, mas o céu indica uma tempestade se aproximando. O que você faz?";
+  choices.innerHTML = `
+    <button onclick="choose('A')">Procurar abrigo</button>
+    <button onclick="choose('B')">Procurar comida</button>
+  `;
+}
+
+function endGame(finalText) {
+  choices.innerHTML = `
+    <p class="final">${finalText}</p>
+    <button class="restart-btn" onclick="restartGame()">Jogar novamente</button>
+  `;
+}
+
 function choose(option) {
   switch(option) {
     // Início
@@ -47,13 +62,11 @@ function choose(option) {
       break;
 
     case 'A1a1a1':
-      storyText.textContent = "O helicóptero te vê acenando e se aproxima lentamente.";
-      choices.innerHTML = `<p class="final">FINAL: Resgate Aéreo — Você foi salvo!</p>`;
+      endGame("FINAL: Resgate Aéreo — Você foi salvo e levado de volta ao continente.");
       break;
 
     case 'A1a1a2':
-      storyText.textContent = "Você tenta acender o fogo, mas a lenha está úmida. O helicóptero se afasta e você perde a chance de ser visto.";
-      choices.innerHTML = `<p class="final">FINAL: Isolado — Você sobreviveu, mas o resgate não te encontrou.</p>`;
+      endGame("FINAL: Solidão Eterna — Você nunca é encontrado e vive isolado na ilha até o fim da vida.");
       break;
 
     case 'A1a1b':
@@ -65,13 +78,11 @@ function choose(option) {
       break;
 
     case 'A1a1b1':
-      storyText.textContent = "Os pescadores te escutam e te levam para o barco.";
-      choices.innerHTML = `<p class="final">FINAL: Resgatado pelos pescadores.</p>`;
+      endGame("FINAL: Resgatado — Você é levado para a cidade em segurança.");
       break;
 
     case 'A1a1b2':
-      storyText.textContent = "Ao amanhecer, você segue as pegadas até a praia, mas eles já foram embora. Você continua sozinho, mas mais preparado.";
-      choices.innerHTML = `<p class="final">FINAL: Sobrevivente solitário.</p>`;
+      endGame("FINAL: Isolado — Você sobrevive por anos, mas nunca mais vê outro ser humano.");
       break;
 
     case 'A1a2':
@@ -83,16 +94,13 @@ function choose(option) {
       break;
 
     case 'A1a2a':
-      storyText.textContent = "A fumaça da fogueira é vista por um navio distante.";
-      choices.innerHTML = `<p class="final">FINAL: Sinal de Esperança — O navio envia uma equipe de busca e te encontra.</p>`;
+      endGame("FINAL: Resgate Marítimo — Um navio percebe sua fumaça e vem até a costa.");
       break;
 
     case 'A1a2b':
-      storyText.textContent = "Você espera a noite toda em silêncio. Pela manhã, encontra pegadas recentes de alguém que passou por ali.";
-      choices.innerHTML = `<p class="final">FINAL: Mistério da Ilha — Você não sabe quem mais está ali, mas sobreviveu mais um dia.</p>`;
+      endGame("FINAL: Encontro Fatal — Ao seguir pegadas pela manhã, você é atacado por um animal selvagem e não sobrevive.");
       break;
 
-    // Fazer fogo na entrada
     case 'A1b':
       storyText.textContent = "Você acende uma fogueira com cuidado. A fumaça sobe e espanta insetos, mas atrai atenção de longe.";
       choices.innerHTML = `
@@ -102,8 +110,7 @@ function choose(option) {
       break;
 
     case 'A1b1':
-      storyText.textContent = "Você se esconde entre as rochas e observa. É um pequeno grupo de pescadores explorando a costa.";
-      choices.innerHTML = `<p class="final">FINAL: Encontro Pacífico — Eles te veem e te levam até o continente.</p>`;
+      endGame("FINAL: Encontro Pacífico — Pescadores te veem e te levam ao continente.");
       break;
 
     case 'A1b2':
@@ -115,16 +122,13 @@ function choose(option) {
       break;
 
     case 'A1b2a':
-      storyText.textContent = "Com gestos e calma, você explica sua situação. Eles te levam até um local seguro e compartilham comida.";
-      choices.innerHTML = `<p class="final">FINAL: Convívio — Você passa dias com os nativos até ser encontrado por um navio.</p>`;
+      endGame("FINAL: Convívio — Você passa o resto da vida vivendo entre os nativos.");
       break;
 
     case 'A1b2b':
-      storyText.textContent = "Você foge apressado pela mata, mas acaba se perdendo e fica sem direção.";
-      choices.innerHTML = `<p class="final">FINAL: Perdido na Floresta — Sua sorte agora depende da natureza.</p>`;
+      endGame("FINAL: Morte na Selva — Você foge e acaba se perdendo, morrendo de fome e exaustão.");
       break;
 
-    // Procurar outro abrigo
     case 'A2':
       storyText.textContent = "Você decide não arriscar entrar na caverna e continua explorando. Após um tempo, encontra uma cabana antiga e abandonada.";
       choices.innerHTML = `
@@ -137,26 +141,34 @@ function choose(option) {
       storyText.textContent = "Dentro da cabana há restos de ferramentas, uma lona e uma velha lanterna.";
       choices.innerHTML = `
         <button onclick="choose('A2a1')">Usar a lona para reforçar o teto</button>
-        <button onclick="choose('A2a2')">Usar a lanterna para explorar a região à noite</button>
+        <button onclick="choose('A2a2')">Usar a lanterna para explorar à noite</button>
       `;
       break;
 
     case 'A2a1':
-      storyText.textContent = "A cabana agora está mais resistente. Você passa a noite e acorda com barulhos de motor no mar.";
-      choices.innerHTML = `<p class="final">FINAL: Resgate Marítimo — Um barco percebe sua presença e vem até a costa.</p>`;
+      endGame("FINAL: Resgate Marítimo — Um barco percebe sua presença e vem até a costa.");
       break;
 
     case 'A2a2':
-      storyText.textContent = "Durante a noite, você encontra um pequeno caminho iluminado pela lua, que leva até uma trilha de pesca.";
-      choices.innerHTML = `<p class="final">FINAL: Caminho da Esperança — Você segue a trilha e é salvo por pescadores.</p>`;
+      endGame("FINAL: Caminho da Esperança — Você segue uma trilha e é salvo por pescadores.");
       break;
 
     case 'A2b':
       storyText.textContent = "Ao redor da cabana, há marcas de pegadas recentes. Alguém parece ter estado ali há pouco tempo.";
-      choices.innerHTML = `<p class="final">FINAL: A Cabana de Alguém — Você decide não entrar e segue pela ilha, ainda sem saber quem mais está ali.</p>`;
+      choices.innerHTML = `
+        <button onclick="choose('A2b1')">Entrar na cabana mesmo assim</button>
+        <button onclick="choose('A2b2')">Seguir as pegadas</button>
+      `;
       break;
 
-    // Procurar comida
+    case 'A2b1':
+      endGame("FINAL: Armadilha Mortal — Você cai em uma armadilha e não sobrevive.");
+      break;
+
+    case 'A2b2':
+      endGame("FINAL: Novo Lar — Você encontra sobreviventes e passa o resto da vida com eles.");
+      break;
+
     case 'B':
       storyText.textContent = "Você decide procurar comida. Após explorar um pouco, encontra um riacho com peixes e algumas árvores frutíferas.";
       choices.innerHTML = `
@@ -174,13 +186,11 @@ function choose(option) {
       break;
 
     case 'B1a':
-      storyText.textContent = "As frutas estavam maduras, mas te causam tontura e náusea.";
-      choices.innerHTML = `<p class="final">FINAL: Intoxicação — Você sobrevive, mas passa dias debilitado e fraco.</p>`;
+      endGame("FINAL: Intoxicação — Você morre envenenado pelas frutas desconhecidas.");
       break;
 
     case 'B1b':
-      storyText.textContent = "Você guarda as frutas e segue explorando. Encontra uma clareira ideal para montar abrigo.";
-      choices.innerHTML = `<p class="final">FINAL: Sobrevivente — Com comida e abrigo, você se adapta à ilha e espera o resgate.</p>`;
+      endGame("FINAL: Sobrevivência — Você monta um abrigo e sobrevive sozinho por anos.");
       break;
 
     case 'B2':
@@ -192,13 +202,16 @@ function choose(option) {
       break;
 
     case 'B2a':
-      storyText.textContent = "Depois de algum tempo, consegue capturar alguns peixes. Alimentado, decide montar um pequeno acampamento perto do riacho.";
-      choices.innerHTML = `<p class="final">FINAL: Vida Selvagem — Você aprende a sobreviver e passa dias em segurança.</p>`;
+      endGame("FINAL: Vida Selvagem — Você sobrevive por muitos anos vivendo da pesca e da caça.");
       break;
 
     case 'B2b':
-      storyText.textContent = "Você não encontra mais nada comestível e a fome começa a apertar.";
-      choices.innerHTML = `<p class="final">FINAL: Fraqueza — Sem alimento suficiente, sua sobrevivência fica incerta.</p>`;
+      endGame("FINAL: Morte pela Fome — Você não encontra mais alimento e seu corpo não resiste.");
       break;
   }
 }
+
+// Inicia o jogo automaticamente
+restartGame();
+
+
