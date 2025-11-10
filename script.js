@@ -4,126 +4,155 @@ let choices = document.getElementById("choices");
 function choose(option) {
   switch(option) {
 
+    // Início
     case 'A':
-      storyText.textContent = "Você decide procurar abrigo. A ilha é densa e silenciosa, o ar úmido e pesado. Após caminhar por um tempo, encontra uma caverna parcialmente escondida por folhagens.";
+      storyText.textContent = "Você decide procurar abrigo. O sol está forte, e a pele começa a queimar. Após caminhar pela areia, encontra uma formação de rochas que pode servir de proteção contra o vento e a chuva.";
       choices.innerHTML = `
-        <button onclick="choose('A1')">Entrar na caverna</button>
-        <button onclick="choose('A2')">Procurar outro abrigo</button>
-      `;
-      break;
-
-    case 'A1':
-      storyText.textContent = "Dentro da caverna, o ar é frio e o som do vento ecoa pelas paredes. Há pegadas antigas no chão — você não está certo se são humanas. Um leve brilho vem do fundo.";
-      choices.innerHTML = `
-        <button onclick="choose('A1a')">Seguir o brilho</button>
-        <button onclick="choose('A1b')">Sair e acender uma fogueira na entrada</button>
-      `;
-      break;
-
-    case 'A1a':
-      storyText.textContent = "Você segue até encontrar um pequeno baú coberto de poeira. Dentro, há uma bússola e um mapa rasgado mostrando parte da ilha.";
-      choices.innerHTML = `
-        <button onclick="choose('A1a1')">Usar o mapa para explorar mais</button>
-        <button onclick="choose('A1a2')">Guardar os itens e descansar ali</button>
-      `;
-      break;
-
-    case 'A1a1':
-      storyText.textContent = "Seguindo o mapa, você encontra uma trilha que leva até uma clareira com restos de um acampamento antigo. Há uma fogueira apagada e objetos deixados para trás.";
-      choices.innerHTML = `
-        <button onclick="choose('A1a1a')">Reacender a fogueira</button>
-        <button onclick="choose('A1a1b')">Explorar os arredores do acampamento</button>
-      `;
-      break;
-
-    case 'A1a1a':
-      storyText.textContent = "O fogo brilha na noite. Horas depois, o barulho distante de um motor corta o silêncio — um barco passa pela costa, guiado pela luz do fogo.";
-      choices.innerHTML = `<p class="final">FINAL: Resgate pela Luz</p>`;
-      break;
-
-    case 'A1a1b':
-      storyText.textContent = "Ao explorar os arredores, você encontra uma placa enferrujada indicando uma antiga base de pesquisa. Seguindo a trilha, encontra antenas e um transmissor ainda funcional.";
-      choices.innerHTML = `<p class="final">FINAL: O Sinal da Esperança</p>`;
-      break;
-
-    case 'A1a2':
-      storyText.textContent = "Você tenta descansar, mas sons estranhos ecoam da caverna. Quando amanhece, descobre que as pegadas levaram algo embora... talvez o mapa tenha sido uma armadilha.";
-      choices.innerHTML = `<p class="final">FINAL: O Mistério da Caverna</p>`;
-      break;
-
-    case 'A1b':
-      storyText.textContent = "Você acende uma fogueira na entrada. A fumaça sobe e ilumina a noite. De repente, vultos aparecem à distância — parecem nativos observando você.";
-      choices.innerHTML = `
-        <button onclick="choose('A1b1')">Tentar se comunicar</button>
-        <button onclick="choose('A1b2')">Apagar o fogo e se esconder</button>
-      `;
-      break;
-
-    case 'A1b1':
-      storyText.textContent = "Os nativos se aproximam lentamente. Um deles oferece frutas e água. Em troca, eles te guiam até uma aldeia próxima na beira do mar.";
-      choices.innerHTML = `<p class="final">FINAL: Resgatado pelos Nativos</p>`;
-      break;
-
-    case 'A1b2':
-      storyText.textContent = "Você se esconde atrás de rochas, mas os nativos percebem o fogo apagado e partem. Sozinho, você decide seguir em busca de ajuda ao amanhecer.";
-      choices.innerHTML = `<p class="final">FINAL: O Sobrevivente Solitário</p>`;
-      break;
-
-    case 'A2':
-      storyText.textContent = "Você decide continuar andando. O sol está forte, e após horas de caminhada, encontra um pequeno riacho. A água é cristalina e cercada por árvores frutíferas.";
-      choices.innerHTML = `
-        <button onclick="choose('B')">Beber e procurar comida</button>
-        <button onclick="choose('C')">Seguir o curso do riacho</button>
+        <button onclick="choose('A1')">Descansar ali</button>
+        <button onclick="choose('A2')">Continuar explorando a ilha</button>
       `;
       break;
 
     case 'B':
-      storyText.textContent = "Você encontra frutas silvestres e decide experimentar algumas. Elas têm um gosto doce e refrescante. Um pouco mais adiante, vê marcas de pegadas recentes.";
+      storyText.textContent = "Você decide procurar comida. Há alguns coqueiros próximos, mas escalar pode ser perigoso. O som do mar encobre ruídos vindos da floresta.";
       choices.innerHTML = `
-        <button onclick="choose('B1')">Seguir as pegadas</button>
-        <button onclick="choose('B2')">Ignorar e descansar ali</button>
+        <button onclick="choose('B1')">Tentar subir no coqueiro</button>
+        <button onclick="choose('B2')">Entrar na floresta</button>
       `;
       break;
 
-    case 'B1':
-      storyText.textContent = "As pegadas levam até uma cabana de madeira desgastada. Dentro, há restos de ferramentas e um diário molhado.";
+    // Caminho A — procurar abrigo
+    case 'A1':
+      storyText.textContent = "Você se abriga entre as rochas. O local é frio, mas protegido. A sede começa a apertar, e você percebe que precisa encontrar água logo.";
       choices.innerHTML = `
-        <button onclick="choose('B1a')">Ler o diário</button>
-        <button onclick="choose('B1b')">Procurar suprimentos</button>
+        <button onclick="choose('A1a')">Seguir em busca de água</button>
+        <button onclick="choose('A1b')">Ficar e tentar recolher água da chuva</button>
+      `;
+      break;
+
+    case 'A1a':
+      storyText.textContent = "Após algumas horas caminhando, você encontra um pequeno riacho. A água parece limpa, mas há folhas e insetos flutuando.";
+      choices.innerHTML = `
+        <button onclick="choose('A1a1')">Beber assim mesmo</button>
+        <button onclick="choose('A1a2')">Ferver a água antes</button>
+      `;
+      break;
+
+    case 'A1a1':
+      storyText.textContent = "Você bebe a água e sente alívio imediato, mas algumas horas depois começa a passar mal. Febre e tontura te impedem de continuar.";
+      choices.innerHTML = `<p class="final">FINAL: Doença por Água Contaminada</p>`;
+      break;
+
+    case 'A1a2':
+      storyText.textContent = "Você faz uma fogueira improvisada e ferve a água. O gosto é amargo, mas você se sente melhor e com forças para continuar a explorar no dia seguinte.";
+      choices.innerHTML = `
+        <button onclick="choose('A1a2a')">Seguir o riacho</button>
+        <button onclick="choose('A1a2b')">Voltar ao abrigo</button>
+      `;
+      break;
+
+    case 'A1a2a':
+      storyText.textContent = "Seguindo o riacho, você chega a uma praia ampla. Ao longe, há destroços do navio — e um rádio parcialmente intacto.";
+      choices.innerHTML = `
+        <button onclick="choose('A1a2a1')">Tentar consertar o rádio</button>
+        <button onclick="choose('A1a2a2')">Procurar comida primeiro</button>
+      `;
+      break;
+
+    case 'A1a2a1':
+      storyText.textContent = "Depois de algumas tentativas, o rádio emite ruídos. Você envia sinais repetidamente até, dias depois, um barco pesqueiro aparecer no horizonte.";
+      choices.innerHTML = `<p class="final">FINAL: Resgate Realista — Sinal de Rádio</p>`;
+      break;
+
+    case 'A1a2a2':
+      storyText.textContent = "Você decide procurar comida antes. Ao voltar, percebe que a maré levou o rádio e parte dos destroços. Agora o resgate ficou muito mais difícil.";
+      choices.innerHTML = `<p class="final">FINAL: Oportunidade Perdida</p>`;
+      break;
+
+    case 'A1a2b':
+      storyText.textContent = "Você volta ao abrigo e consegue sobreviver por mais alguns dias, caçando pequenos caranguejos e armazenando água da chuva.";
+      choices.innerHTML = `<p class="final">FINAL: Sobrevivente da Ilha</p>`;
+      break;
+
+    case 'A1b':
+      storyText.textContent = "Você junta folhas e improvisa um recipiente com pedaços de plástico encontrados na praia. Após algumas horas, a chuva começa leve e te dá água suficiente para mais um dia.";
+      choices.innerHTML = `
+        <button onclick="choose('A1b1')">Explorar os arredores</button>
+        <button onclick="choose('A1b2')">Descansar e economizar energia</button>
+      `;
+      break;
+
+    case 'A1b1':
+      storyText.textContent = "Nos arredores, você encontra restos de um acampamento antigo — cordas, latas vazias e um pedaço de lona. Agora pode construir um abrigo melhor.";
+      choices.innerHTML = `<p class="final">FINAL: A Cabana Improvisada</p>`;
+      break;
+
+    case 'A1b2':
+      storyText.textContent = "Você tenta descansar, mas o vento e o frio da noite são intensos. Ao amanhecer, acorda fraco e com sinais de hipotermia.";
+      choices.innerHTML = `<p class="final">FINAL: Hipotermia</p>`;
+      break;
+
+    case 'A2':
+      storyText.textContent = "Você continua andando pela ilha. Após horas, encontra pegadas humanas recentes. Alguém pode estar por perto.";
+      choices.innerHTML = `
+        <button onclick="choose('A2a')">Seguir as pegadas</button>
+        <button onclick="choose('A2b')">Ignorar e procurar comida</button>
+      `;
+      break;
+
+    case 'A2a':
+      storyText.textContent = "As pegadas levam até uma pequena cabana feita de troncos. Parece abandonada, mas há sinais de que foi usada recentemente.";
+      choices.innerHTML = `
+        <button onclick="choose('A2a1')">Entrar e procurar suprimentos</button>
+        <button onclick="choose('A2a2')">Esperar por quem mora ali</button>
+      `;
+      break;
+
+    case 'A2a1':
+      storyText.textContent = "Você encontra um canivete, uma garrafa d’água e um sinalizador. Dias depois, usa o sinalizador ao ver um avião passando.";
+      choices.innerHTML = `<p class="final">FINAL: Resgate pelo Sinalizador</p>`;
+      break;
+
+    case 'A2a2':
+      storyText.textContent = "Você espera até o entardecer, mas ninguém aparece. Durante a noite, o som de passos te acorda. Pela manhã, tudo está revirado e os suprimentos sumiram.";
+      choices.innerHTML = `<p class="final">FINAL: Roubo na Ilha</p>`;
+      break;
+
+    // Caminho B — procurar comida
+    case 'B1':
+      storyText.textContent = "Você tenta subir no coqueiro, mas escorrega e machuca o braço. Apesar da dor, consegue derrubar alguns cocos com um galho.";
+      choices.innerHTML = `
+        <button onclick="choose('B1a')">Ficar e descansar</button>
+        <button onclick="choose('B1b')">Seguir para o interior da ilha</button>
       `;
       break;
 
     case 'B1a':
-      storyText.textContent = "O diário conta a história de um explorador que viveu na ilha e tentou construir um rádio caseiro. Ele deixou coordenadas de uma praia segura.";
-      choices.innerHTML = `<p class="final">FINAL: O Legado do Explorador</p>`;
+      storyText.textContent = "Você se alimenta e bebe água de coco. O corpo relaxa, e você consegue dormir bem pela primeira vez. O dia seguinte traz forças renovadas.";
+      choices.innerHTML = `<p class="final">FINAL: Adaptação e Sobrevivência</p>`;
       break;
 
     case 'B1b':
-      storyText.textContent = "Você encontra cordas, lonas e uma faca enferrujada. Com isso, monta um abrigo simples e sobrevive por mais alguns dias, à espera de ajuda.";
-      choices.innerHTML = `<p class="final">FINAL: O Sobrevivente Prático</p>`;
+      storyText.textContent = "O interior da ilha é denso. Você encontra um riacho, mas também ouve sons de animais próximos. É perigoso continuar sozinho.";
+      choices.innerHTML = `<p class="final">FINAL: Desaparecido na Floresta</p>`;
       break;
 
     case 'B2':
-      storyText.textContent = "Você descansa perto da água e observa o pôr do sol. Durante a noite, o barulho de tambores distantes ecoa pela floresta. Você não está sozinho...";
-      choices.innerHTML = `<p class="final">FINAL: O Som da Selva</p>`;
-      break;
-
-    case 'C':
-      storyText.textContent = "Você segue o riacho até ele se dividir em dois. Um caminho leva à floresta densa, o outro parece seguir em direção ao mar.";
+      storyText.textContent = "A floresta é úmida e cheia de insetos. Você encontra algumas frutas parecidas com goiabas, mas não tem certeza se são comestíveis.";
       choices.innerHTML = `
-        <button onclick="choose('C1')">Ir para a floresta</button>
-        <button onclick="choose('C2')">Seguir rumo ao mar</button>
+        <button onclick="choose('B2a')">Comer as frutas</button>
+        <button onclick="choose('B2b')">Evitar e continuar caminhando</button>
       `;
       break;
 
-    case 'C1':
-      storyText.textContent = "A floresta é escura e cheia de sons desconhecidos. De repente, o chão cede e você cai em uma caverna subterrânea iluminada por musgos.";
-      choices.innerHTML = `<p class="final">FINAL: O Abismo Verde</p>`;
+    case 'B2a':
+      storyText.textContent = "As frutas têm um gosto estranho, mas parecem inofensivas. Com energia renovada, você segue até encontrar uma clareira com restos de madeira — talvez possa construir algo.";
+      choices.innerHTML = `<p class="final">FINAL: Abrigo Sustentado</p>`;
       break;
 
-    case 'C2':
-      storyText.textContent = "Seguindo o som das ondas, você chega à praia. Um barco velho está encalhado na areia, ainda com o nome visível: Esperança. Talvez haja combustível.";
-      choices.innerHTML = `<p class="final">FINAL: A Fuga da Esperança</p>`;
+    case 'B2b':
+      storyText.textContent = "Você caminha por horas sem encontrar nada útil. A fome e o cansaço te fazem desmaiar perto do pôr do sol.";
+      choices.innerHTML = `<p class="final">FINAL: Exaustão</p>`;
       break;
   }
 }
